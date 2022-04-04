@@ -17,6 +17,16 @@ namespace rendszszerterv_winapp
             InitializeComponent();
             lab_user.Text += variables.currentuser.item.username.ToString();
             lab_usertype.Text += variables.currentuser.item.userType.ToString();
+
+            for (int i = 0; i < variables.currentuser.item.educations.Length; i++)
+            {
+                Label namelabel = new Label();
+                namelabel.Location = new Point(85, 130+20*i);
+                namelabel.Text = variables.currentuser.item.educations[i].name.ToString();
+                namelabel.AutoSize = true;
+                this.Controls.Add(namelabel);
+            }
+
         }
 
         private void but_tools_Click(object sender, EventArgs e)
@@ -45,6 +55,14 @@ namespace rendszszerterv_winapp
         private void but_edu_Click(object sender, EventArgs e)
         {
             eduform Check = new eduform();
+            Check.Show();
+            Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            variables.currentuser = null;
+            Login Check = new Login();
             Check.Show();
             Hide();
         }

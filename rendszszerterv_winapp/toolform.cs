@@ -289,9 +289,11 @@ namespace rendszszerterv_winapp
 
         private void toolform_FormClosing(object sender, FormClosingEventArgs e)
         {
-            eduform Check = new eduform();
+            menu Check = new menu();
             Check.Show();
             Hide();
         }
+
+      
     }
 }

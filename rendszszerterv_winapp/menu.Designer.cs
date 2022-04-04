@@ -34,6 +34,8 @@ namespace rendszszerterv_winapp
             this.lab_user = new System.Windows.Forms.Label();
             this.lab_usertype = new System.Windows.Forms.Label();
             this.but_edu = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // but_users
@@ -84,11 +86,32 @@ namespace rendszszerterv_winapp
             this.but_edu.UseVisualStyleBackColor = true;
             this.but_edu.Click += new System.EventHandler(this.but_edu_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Képzettségek";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(302, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(158, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Kijelentkezés";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.but_edu);
             this.Controls.Add(this.lab_usertype);
             this.Controls.Add(this.lab_user);
@@ -109,5 +132,7 @@ namespace rendszszerterv_winapp
         private System.Windows.Forms.Label lab_user;
         private System.Windows.Forms.Label lab_usertype;
         private System.Windows.Forms.Button but_edu;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

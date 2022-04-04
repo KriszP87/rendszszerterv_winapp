@@ -30,10 +30,12 @@ namespace rendszszerterv_winapp
             list_edu();
 
 
-            edu_tabcontrol.TabPages[0].Text = "Oktatások listázás";
-            edu_tabcontrol.TabPages[1].Text = "Új oktatás hozzáadása";
-            edu_tabcontrol.TabPages[2].Text = "Oktatás eszközhöz rendelése";
-            edu_tabcontrol.TabPages[3].Text = "Eszköz oktatás kapcsoaltok listázása";
+            edu_tabcontrol.TabPages[0].Text = "Képzettségek listázás";
+            edu_tabcontrol.TabPages[1].Text = "Új képzettségek hozzáadása";
+            edu_tabcontrol.TabPages[2].Text = "Képzettségek kategóriához rendelése";
+            edu_tabcontrol.TabPages[3].Text = "Képzettséghez rendelt  kategóriák listázása";
+            edu_tabcontrol.TabPages[4].Text = "Képzettséghez rendelése felhasználóhoz";
+            edu_tabcontrol.TabPages[5].Text = "Képzettséghez rendelt  felhasználók listázása";
          
          
         }
@@ -320,5 +322,7 @@ namespace rendszszerterv_winapp
             int eid = Convert.ToInt32(oktat_combox.SelectedValue);
             conn_list(eid);
         }
+
+      
     }
 }

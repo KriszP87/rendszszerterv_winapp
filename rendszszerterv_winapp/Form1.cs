@@ -97,7 +97,7 @@ namespace rendszszerterv_winapp
             saveuser(name, type, pw, -1);
             txt_username.Text = "";
             txt_password.Text = "";
-            txt_newpass.Text = "";
+    
             
         }
 

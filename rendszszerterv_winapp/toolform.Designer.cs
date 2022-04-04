@@ -109,7 +109,7 @@ namespace rendszszerterv_winapp
             // tool_list_datagrid
             // 
             this.tool_list_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tool_list_datagrid.Location = new System.Drawing.Point(0, 19);
+            this.tool_list_datagrid.Location = new System.Drawing.Point(7, 22);
             this.tool_list_datagrid.Name = "tool_list_datagrid";
             this.tool_list_datagrid.RowTemplate.Height = 25;
             this.tool_list_datagrid.Size = new System.Drawing.Size(753, 315);
@@ -147,35 +147,35 @@ namespace rendszszerterv_winapp
             // cat_list_combobox
             // 
             this.cat_list_combobox.FormattingEnabled = true;
-            this.cat_list_combobox.Location = new System.Drawing.Point(338, 185);
+            this.cat_list_combobox.Location = new System.Drawing.Point(338, 182);
             this.cat_list_combobox.Name = "cat_list_combobox";
             this.cat_list_combobox.Size = new System.Drawing.Size(121, 23);
             this.cat_list_combobox.TabIndex = 10;
             // 
             // txt_desc
             // 
-            this.txt_desc.Location = new System.Drawing.Point(338, 144);
+            this.txt_desc.Location = new System.Drawing.Point(338, 141);
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(100, 23);
             this.txt_desc.TabIndex = 8;
             // 
             // txt_identi
             // 
-            this.txt_identi.Location = new System.Drawing.Point(338, 106);
+            this.txt_identi.Location = new System.Drawing.Point(338, 103);
             this.txt_identi.Name = "txt_identi";
             this.txt_identi.Size = new System.Drawing.Size(100, 23);
             this.txt_identi.TabIndex = 7;
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(338, 61);
+            this.txt_name.Location = new System.Drawing.Point(338, 66);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 23);
             this.txt_name.TabIndex = 6;
             // 
             // but_createtool
             // 
-            this.but_createtool.Location = new System.Drawing.Point(286, 262);
+            this.but_createtool.Location = new System.Drawing.Point(276, 261);
             this.but_createtool.Name = "but_createtool";
             this.but_createtool.Size = new System.Drawing.Size(201, 23);
             this.but_createtool.TabIndex = 5;
@@ -195,7 +195,7 @@ namespace rendszszerterv_winapp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(253, 70);
+            this.label1.Location = new System.Drawing.Point(276, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 0;
@@ -222,7 +222,7 @@ namespace rendszszerterv_winapp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(256, 144);
+            this.label4.Location = new System.Drawing.Point(276, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 3;
