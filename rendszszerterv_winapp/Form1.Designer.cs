@@ -35,6 +35,10 @@ namespace rendszszerterv_winapp
             this.edu_datagrid = new System.Windows.Forms.DataGridView();
             this.userlist_datagrid = new System.Windows.Forms.DataGridView();
             this.newuser_panel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.but_crerateuser = new System.Windows.Forms.Button();
             this.rad_eszkoz = new System.Windows.Forms.RadioButton();
             this.rad_op = new System.Windows.Forms.RadioButton();
@@ -45,10 +49,21 @@ namespace rendszszerterv_winapp
             this.user_tabcontrol = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.edit_user_panel = new System.Windows.Forms.Panel();
+            this.user_cahnge_tab_layout = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_edit_pass = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txt_edit_username = new System.Windows.Forms.TextBox();
+            this.edit_usertype_combbox = new System.Windows.Forms.ComboBox();
+            this.pan_edu_list = new System.Windows.Forms.Panel();
+            this.users_combobox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.but_change_data = new System.Windows.Forms.Button();
             this.userlist_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edu_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userlist_datagrid)).BeginInit();
@@ -56,6 +71,9 @@ namespace rendszszerterv_winapp
             this.user_tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.edit_user_panel.SuspendLayout();
+            this.user_cahnge_tab_layout.SuspendLayout();
             this.SuspendLayout();
             // 
             // userlist_panel
@@ -127,6 +145,42 @@ namespace rendszszerterv_winapp
             this.newuser_panel.Name = "newuser_panel";
             this.newuser_panel.Size = new System.Drawing.Size(853, 526);
             this.newuser_panel.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(306, 191);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 15);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Pozíció:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(314, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(142, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Új felhasználó létrehozása";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(314, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Jelszó:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(264, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Felhazsnálónév:";
             // 
             // but_crerateuser
             // 
@@ -201,6 +255,7 @@ namespace rendszszerterv_winapp
             // 
             this.user_tabcontrol.Controls.Add(this.tabPage1);
             this.user_tabcontrol.Controls.Add(this.tabPage2);
+            this.user_tabcontrol.Controls.Add(this.tabPage3);
             this.user_tabcontrol.Location = new System.Drawing.Point(0, 12);
             this.user_tabcontrol.Name = "user_tabcontrol";
             this.user_tabcontrol.SelectedIndex = 0;
@@ -230,41 +285,168 @@ namespace rendszszerterv_winapp
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // tabPage3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(264, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Felhazsnálónév:";
+            this.tabPage3.Controls.Add(this.edit_user_panel);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(859, 532);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // edit_user_panel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(314, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Jelszó:";
+            this.edit_user_panel.Controls.Add(this.but_change_data);
+            this.edit_user_panel.Controls.Add(this.user_cahnge_tab_layout);
+            this.edit_user_panel.Controls.Add(this.users_combobox);
+            this.edit_user_panel.Controls.Add(this.label8);
+            this.edit_user_panel.Controls.Add(this.label7);
+            this.edit_user_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit_user_panel.Location = new System.Drawing.Point(3, 3);
+            this.edit_user_panel.Name = "edit_user_panel";
+            this.edit_user_panel.Size = new System.Drawing.Size(853, 526);
+            this.edit_user_panel.TabIndex = 0;
             // 
-            // label5
+            // user_cahnge_tab_layout
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(314, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Új felhasználó létrehozása";
+            this.user_cahnge_tab_layout.AutoSize = true;
+            this.user_cahnge_tab_layout.ColumnCount = 2;
+            this.user_cahnge_tab_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49F));
+            this.user_cahnge_tab_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51F));
+            this.user_cahnge_tab_layout.Controls.Add(this.label12, 0, 3);
+            this.user_cahnge_tab_layout.Controls.Add(this.label11, 0, 2);
+            this.user_cahnge_tab_layout.Controls.Add(this.txt_edit_pass, 1, 1);
+            this.user_cahnge_tab_layout.Controls.Add(this.label10, 0, 1);
+            this.user_cahnge_tab_layout.Controls.Add(this.label9, 0, 0);
+            this.user_cahnge_tab_layout.Controls.Add(this.txt_edit_username, 1, 0);
+            this.user_cahnge_tab_layout.Controls.Add(this.edit_usertype_combbox, 1, 2);
+            this.user_cahnge_tab_layout.Controls.Add(this.pan_edu_list, 1, 3);
+            this.user_cahnge_tab_layout.Location = new System.Drawing.Point(227, 136);
+            this.user_cahnge_tab_layout.Name = "user_cahnge_tab_layout";
+            this.user_cahnge_tab_layout.RowCount = 4;
+            this.user_cahnge_tab_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.85542F));
+            this.user_cahnge_tab_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.14458F));
+            this.user_cahnge_tab_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.user_cahnge_tab_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.user_cahnge_tab_layout.Size = new System.Drawing.Size(410, 188);
+            this.user_cahnge_tab_layout.TabIndex = 4;
             // 
-            // label6
+            // label12
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(306, 191);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 15);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Pozíció:";
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 150);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(194, 15);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Képzettségek:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 96);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(194, 15);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Jogosultság";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_edit_pass
+            // 
+            this.txt_edit_pass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_edit_pass.Location = new System.Drawing.Point(203, 54);
+            this.txt_edit_pass.Name = "txt_edit_pass";
+            this.txt_edit_pass.Size = new System.Drawing.Size(204, 23);
+            this.txt_edit_pass.TabIndex = 3;
+            this.txt_edit_pass.UseSystemPasswordChar = true;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 57);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(194, 15);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Jelszó:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(194, 15);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Felhasználónév:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_edit_username
+            // 
+            this.txt_edit_username.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_edit_username.Location = new System.Drawing.Point(203, 14);
+            this.txt_edit_username.Name = "txt_edit_username";
+            this.txt_edit_username.Size = new System.Drawing.Size(204, 23);
+            this.txt_edit_username.TabIndex = 1;
+            // 
+            // edit_usertype_combbox
+            // 
+            this.edit_usertype_combbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.edit_usertype_combbox.FormattingEnabled = true;
+            this.edit_usertype_combbox.Location = new System.Drawing.Point(203, 92);
+            this.edit_usertype_combbox.Name = "edit_usertype_combbox";
+            this.edit_usertype_combbox.Size = new System.Drawing.Size(204, 23);
+            this.edit_usertype_combbox.TabIndex = 5;
+            // 
+            // pan_edu_list
+            // 
+            this.pan_edu_list.AutoSize = true;
+            this.pan_edu_list.Location = new System.Drawing.Point(203, 131);
+            this.pan_edu_list.Name = "pan_edu_list";
+            this.pan_edu_list.Size = new System.Drawing.Size(0, 0);
+            this.pan_edu_list.TabIndex = 7;
+            // 
+            // users_combobox
+            // 
+            this.users_combobox.FormattingEnabled = true;
+            this.users_combobox.Location = new System.Drawing.Point(345, 87);
+            this.users_combobox.Name = "users_combobox";
+            this.users_combobox.Size = new System.Drawing.Size(123, 23);
+            this.users_combobox.TabIndex = 2;
+            this.users_combobox.SelectionChangeCommitted += new System.EventHandler(this.users_combobox_SelectionChangeCommitted);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(345, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 15);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Válasszon felhasználót";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(316, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(180, 15);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Felhasználó adatinak módosítása";
+            // 
+            // but_change_data
+            // 
+            this.but_change_data.Location = new System.Drawing.Point(352, 361);
+            this.but_change_data.Name = "but_change_data";
+            this.but_change_data.Size = new System.Drawing.Size(144, 23);
+            this.but_change_data.TabIndex = 5;
+            this.but_change_data.Text = "Adatok módosítása";
+            this.but_change_data.UseVisualStyleBackColor = true;
+            this.but_change_data.Click += new System.EventHandler(this.but_change_data_Click);
             // 
             // Form1
             // 
@@ -284,6 +466,11 @@ namespace rendszszerterv_winapp
             this.user_tabcontrol.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.edit_user_panel.ResumeLayout(false);
+            this.edit_user_panel.PerformLayout();
+            this.user_cahnge_tab_layout.ResumeLayout(false);
+            this.user_cahnge_tab_layout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -309,6 +496,21 @@ namespace rendszszerterv_winapp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel edit_user_panel;
+        private System.Windows.Forms.ComboBox users_combobox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TableLayoutPanel user_cahnge_tab_layout;
+        private System.Windows.Forms.TextBox txt_edit_pass;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txt_edit_username;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox edit_usertype_combbox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel pan_edu_list;
+        private System.Windows.Forms.Button but_change_data;
     }
 }
 

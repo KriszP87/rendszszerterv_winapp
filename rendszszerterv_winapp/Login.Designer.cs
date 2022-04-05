@@ -36,6 +36,7 @@ namespace rendszszerterv_winapp
             this.lab_user = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // but_login
@@ -98,11 +99,21 @@ namespace rendszszerterv_winapp
             this.label2.TabIndex = 6;
             this.label2.Text = "Jelszó:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(155, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Rendszerfejlesztés";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lab_user);
@@ -127,5 +138,6 @@ namespace rendszszerterv_winapp
         private System.Windows.Forms.Label lab_user;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -32,6 +32,8 @@ namespace rendszszerterv_winapp
             tools_tabcontrol.TabPages[1].Text = "Eszköz hozzáadása";
             tools_tabcontrol.TabPages[2].Text = "Kategória hozzáadása";
             tools_tabcontrol.TabPages[3].Text = "Kategóriák listázása";
+            tools_tabcontrol.TabPages[4].Text = "Eszköz szerkesztése";
+            tools_tabcontrol.TabPages[5].Text = "Kategória szerkesztése";
             list_tools();
 
         }
@@ -115,22 +117,31 @@ namespace rendszszerterv_winapp
         {
 
             int id = Convert.ToInt32(cat_list_combobox.SelectedValue);
-            savetool(txt_name.Text.ToString(), txt_identi.Text.ToString(), txt_desc.Text.ToString(),id );
+            savetool(txt_name.Text.ToString(), txt_identi.Text.ToString(), txt_desc.Text.ToString(),id, -1);
            
             txt_name.Text = "";
             txt_identi.Text = "";
             txt_desc.Text = "";
         }
 
-        static async Task savetool(string name, string iden, string desc, int id)
+        static async Task savetool(string name, string iden, string desc, int id, int toolid)
         {
-          
-               string  json = "{\"param\": {\"name\" : \"" + name + "\",\"identifier\" : \"" + iden + "\",\"description\" : \"" + desc + "\", \"toolCategory\": { \"id\" : "+id+"}}}";
+            string json;
+            if (toolid==-1)
+            {
+                json = "{\"param\": {\"name\" : \"" + name + "\",\"identifier\" : \"" + iden + "\",\"description\" : \"" + desc + "\", \"toolCategory\": { \"id\" : " + id + "}}}";
 
-           
+            }
+            else
+            {
+                json = "{\"param\": {\"id\" : "+toolid+ ",\"name\" : \"" + name + "\",\"identifier\" : \"" + iden + "\",\"description\" : \"" + desc + "\", \"toolCategory\": { \"id\" : " + id + "}}}";
+
+            }
 
 
-          
+
+
+
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
             using (var client = new HttpClient())
@@ -141,10 +152,15 @@ namespace rendszszerterv_winapp
 
                 if (response.IsSuccessStatusCode)
                 {
+                    if (toolid == -1)
+                    {
 
-                    
                         MessageBox.Show("Eszköz sikeresen rögzítve", "Üzenet");
-                    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Eszköz adatai sikeresen módosítva letttek", "Üzenet");
+                    }
                 
                 }
                 else
@@ -160,7 +176,7 @@ namespace rendszszerterv_winapp
 
         private void tools_tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tools_tabcontrol.SelectedIndex==0)
+            if (tools_tabcontrol.SelectedIndex == 0)
             {
                 list_tools();
             }
@@ -198,7 +214,7 @@ namespace rendszszerterv_winapp
                 cat_list_grid.Columns.Add("maintenanceInterval", "Karbantartási időszak");
                 cat_list_grid.Columns.Add("description", "Leírás");
                 cat_list_grid.Columns.Add("parentCategory", "Szülő kategória");
-               
+
                 for (int i = 0; i < catlist.items.Length; i++)
                 {
                     DataGridViewRow row = (DataGridViewRow)cat_list_grid.Rows[0].Clone();
@@ -209,7 +225,7 @@ namespace rendszszerterv_winapp
                     if (catlist.items[i].parentCategory is not null)
                     {
                         row.Cells[4].Value = catlist.items[i].parentCategory.category;
-                      
+
                     }
                     else
                     {
@@ -225,12 +241,61 @@ namespace rendszszerterv_winapp
                 tool_list_datagrid.Refresh();
 
             }
+            else if (tools_tabcontrol.SelectedIndex == 4)
+            {
+                list_tools();
+
+                List<comb_item> sel_tool = new List<comb_item>();
+                sel_tool.Add(new comb_item() { Text = "Kérem válasszon", Value = "-1" });
+                for (int i = 0; i < toollist.items.Length; i++)
+                {
+
+
+                    sel_tool.Add(new comb_item() { Text = toollist.items[i].name.ToString(), Value = toollist.items[i].id.ToString() });
+                }
+
+                select_edit_tool_combobox.DataSource = sel_tool;
+                select_edit_tool_combobox.DisplayMember = "Text";
+                select_edit_tool_combobox.ValueMember = "Value";
+
+                comboadditems(edit_tool_cat_combobox);
+
+
+            }
+
+
+            else if (tools_tabcontrol.SelectedIndex == 5)
+            {
+                list_cat();
+                comboadditems(select_edit_cat_combobox); 
+                comboadditems(edit_cat_parent_cat_combobox);
+
+                List<comb_item> time = new List<comb_item>();
+
+                time.Add(new comb_item() { Text = "Éves", Value = "YEAR" });
+                time.Add(new comb_item() { Text = "Féléves", Value = "HALF_YEAR" });
+                time.Add(new comb_item() { Text = "Negyedves", Value = "QUARTER" });
+                time.Add(new comb_item() { Text = "Havi", Value = "MONTH" });
+                time.Add(new comb_item() { Text = "Heti", Value = "WEEK" });
+
+
+                edit_cat_select_time_combobox.DataSource = time;
+                edit_cat_select_time_combobox.DisplayMember = "Text";
+                edit_cat_select_time_combobox.ValueMember = "Value";
+
+
+
+
+            }
+
+
+
         }
 
         private async void but_new_cat_Click(object sender, EventArgs e)
         {
             int parid = Convert.ToInt32(parent_cat_combobox.SelectedValue);
-            savecat(txt_cat_name.Text.ToString(), time_combobox.SelectedValue.ToString(), txt_cat_desc.Text.ToString(), parid);
+            savecat(txt_cat_name.Text.ToString(), time_combobox.SelectedValue.ToString(), txt_cat_desc.Text.ToString(), parid,-1);
 
             txt_cat_desc.Text = "";
             txt_cat_name.Text = "";
@@ -238,22 +303,26 @@ namespace rendszszerterv_winapp
         }
 
 
-        static async Task savecat(string name, string interval, string desc, int id)
+        static async Task savecat(string name, string interval, string desc, int patentid, int catid)
         {
-            string json;
-
-            if (id==-1)
+            string json = "{\"param\": {";
+            if (catid != -1)
             {
-                json = "{\"param\": {\"category\" : \"" + name + "\",\"maintenanceInterval\" : \"" + interval + "\",\"description\" : \"" + desc + "\"}}";
+                json += "\"id\" : " + catid + ",";
+            }
+            
+                json += "\"category\" : \"" + name + "\",\"maintenanceInterval\" : \"" + interval + "\",\"description\" : \"" + desc + "\"";
 
+
+            if (patentid!=-1)
+            {
+                json += ", \"parentCategory\": { \"id\" : " + patentid + "}}}";
             }
             else
             {
-
-           
-             json = "{\"param\": {\"category\" : \"" + name + "\",\"maintenanceInterval\" : \"" + interval + "\",\"description\" : \"" + desc + "\", \"parentCategory\": { \"id\" : " + id + "}}}";
-             
+                json += "}}";
             }
+            
 
 
 
@@ -269,10 +338,15 @@ namespace rendszszerterv_winapp
                 if (response.IsSuccessStatusCode)
                 {
 
-                
-                    
+
+                    if (catid == -1)
+                    {
                         MessageBox.Show("Kategória sikeresen rögzítve", "Üzenet");
-                    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kategória sikeresen módosítva", "Üzenet");
+                    }
                    
 
                 }
@@ -294,6 +368,72 @@ namespace rendszszerterv_winapp
             Hide();
         }
 
+        private void select_edit_tool_combobox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(select_edit_tool_combobox.SelectedValue) != -1)
+            {
+
+                int toolid = Convert.ToInt32(select_edit_tool_combobox.SelectedValue);
+                int index = 0;
+          
+                while (toolid != toollist.items[index].id)
+                {
+                    index++;
+                };
+                txt_edit_tool_name.Text = toollist.items[index].name;
+                txt_edit_tool_iden.Text = toollist.items[index].identifier;
+                txt_edit_tool_desc.Text = toollist.items[index].description;
+               
+                edit_tool_cat_combobox.SelectedValue = toollist.items[index].toolCategory.id.ToString();
       
+
+            }
+            else
+            {
+                txt_edit_tool_desc.Text = "";
+                txt_edit_tool_iden.Text = "";
+                txt_edit_tool_name.Text = "";
+            }
+        }
+
+        private async void but_edit_tool_Click(object sender, EventArgs e)
+        {
+            savetool(txt_edit_tool_name.Text.ToString(), txt_edit_tool_iden.Text.ToString(), txt_edit_tool_desc.Text.ToString(), Convert.ToInt32(edit_tool_cat_combobox.SelectedValue), Convert.ToInt32(select_edit_tool_combobox.SelectedValue));
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            savecat(txt_edit_cat_name.Text.ToString(), edit_cat_select_time_combobox.SelectedValue.ToString(), txt_edit_cat_desc.Text.ToString(), Convert.ToInt32(edit_cat_parent_cat_combobox.SelectedValue), Convert.ToInt32(select_edit_cat_combobox.SelectedValue));
+
+        }
+
+        private void select_edit_cat_combobox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(select_edit_cat_combobox.SelectedValue) != -1)
+            {
+
+                int cazid = Convert.ToInt32(select_edit_cat_combobox.SelectedValue);
+                int index = 0;
+
+                while (cazid != catlist.items[index].id)
+                {
+                    index++;
+                };
+                txt_edit_cat_name.Text = catlist.items[index].category;
+                txt_edit_cat_desc.Text = catlist.items[index].description;
+       
+
+                edit_cat_select_time_combobox.SelectedValue = catlist.items[index].maintenanceInterval.ToString();
+                edit_cat_parent_cat_combobox.SelectedValue = catlist.items[index].parentCategory.id;
+
+
+            }
+            else
+            {
+                txt_edit_cat_name.Text = "";
+                txt_edit_cat_desc.Text = "";
+        
+            }
+        }
     }
 }

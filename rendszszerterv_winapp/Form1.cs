@@ -18,13 +18,16 @@ namespace rendszszerterv_winapp
 {
     public partial class Form1 : Form
     {
+        int edu_number;
         public Form1()
         {
             InitializeComponent();
 
+          
 
             user_tabcontrol.TabPages[0].Text = "Felhasználók listázás";
             user_tabcontrol.TabPages[1].Text = "Felhasználó hozzáadása";
+            user_tabcontrol.TabPages[2].Text = "Felhasználó adatainak módosítása";
 
             listuser();
         }
@@ -67,11 +70,6 @@ namespace rendszszerterv_winapp
            
         }
 
-        private void newuser_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-
-        }
 
         private async void but_crerateuser_Click(object sender, EventArgs e)
         {
@@ -101,7 +99,7 @@ namespace rendszszerterv_winapp
             
         }
 
-        static async Task saveuser(string username, string usertype, string password, int id)
+         async Task saveuser(string username, string usertype, string password, int id)
         {
             string json;
             if (id==-1)
@@ -111,8 +109,21 @@ namespace rendszszerterv_winapp
             }
             else
             {
-                json = "{\"param\": {\"id\" : " + id + ",\"username\" : \"" + username + "\",\"password\" : \"" + password + "\",\"userType\" : \"" + usertype + "\"}}";
+                json = "{\"param\": {\"id\" : " + id + ",\"username\" : \"" + username + "\",\"password\" : \"" + password + "\",\"userType\" : \"" + usertype + "\", \"educations\":[]} }";
+                //for (int i = 0; i < edu_number; i++)
+                //{
+                //    CheckBox cbox = pan_edu_list.Controls.Find() as CheckBox;
+                //    if (chkbox_All != null)
+                //        if (i != 0)
+                //    {
+                //        json += ",";
+                //    }
+                //    json += "{\"id\": " +  +"}";
+                   
+                  
 
+                   
+                //}
             }
 
 
@@ -149,16 +160,51 @@ namespace rendszszerterv_winapp
 
         }
 
+        public class comb_item
+        {
+            public comb_item() { }
+
+            public string Value { set; get; }
+            public string Text { set; get; }
+        }
+
         private async void user_tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (user_tabcontrol.SelectedIndex ==0)
             {
                 listuser();
             }
-            else if (user_tabcontrol.SelectedIndex == 1)
+            else if (user_tabcontrol.SelectedIndex == 2)
             {
-             
+                listuser();
+
+                List<comb_item> catl = new List<comb_item>();
+                catl.Add(new comb_item() { Text = "Kérem válasszon", Value = "-1" });
+                for (int i = 0; i < user.userlist.items.Length; i++)
+                {
+
+
+                    catl.Add(new comb_item() { Text = user.userlist.items[i].username.ToString(), Value = user.userlist.items[i].id.ToString() });
+                }
+
+                users_combobox.DataSource = catl;
+                users_combobox.DisplayMember = "Text";
+                users_combobox.ValueMember = "Value";
+
+
+
+                List<comb_item> usrtypes = new List<comb_item>();
+
+                usrtypes.Add(new comb_item() { Text = "Adminisztátor", Value = "ADMIN" });
+                usrtypes.Add(new comb_item() { Text = "Eszköz felelős", Value = "TOOL_MANAGER" });
+                usrtypes.Add(new comb_item() { Text = "Karbantartó", Value = "REPAIRMAN" });
+                usrtypes.Add(new comb_item() { Text = "Operátor", Value = "OPERATOR" });
+
+                edit_usertype_combbox.DataSource = usrtypes;
+                edit_usertype_combbox.DisplayMember = "Text";
+                edit_usertype_combbox.ValueMember = "Value";
             }
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -168,6 +214,50 @@ namespace rendszszerterv_winapp
             Hide();
         }
 
-      
+        private void users_combobox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(users_combobox.SelectedValue) != -1)
+            {
+
+
+                int user_id = Convert.ToInt32(users_combobox.SelectedValue);
+                int index = 0;
+                edu_number = 0;
+                while (user_id != user.userlist.items[index].id)
+                {
+                    index++;
+                };
+                txt_edit_username.Text = user.userlist.items[index].username;
+                txt_edit_pass.Text = "";
+                edit_usertype_combbox.SelectedValue = user.userlist.items[index].userType.ToString();
+                pan_edu_list.Controls.Clear();
+                //for (int i = 0; i < user.userlist.items[index].educations.Length; i++)
+                //{
+                //    CheckBox cbox = new CheckBox();
+                //    cbox.Name = user.userlist.items[index].educations[i].id.ToString();
+                //    cbox.Text = user.userlist.items[index].educations[i].name.ToString();
+                //    cbox.Checked = true;
+                //    cbox.AutoSize = true;
+                //    cbox.Location = new Point(10, i * 20);
+                //    pan_edu_list.Controls.Add(cbox);
+                    
+                //    //user_cahnge_tab_layout.Controls.Add(cbox,1, user_cahnge_tab_layout.RowCount - 1);
+
+                //    edu_number++;
+                //}
+
+            }
+            else
+            {
+                txt_edit_username.Text = "";
+                txt_edit_pass.Text = "";
+                pan_edu_list.Controls.Clear();
+            }
+        }
+
+        private async void but_change_data_Click(object sender, EventArgs e)
+        {
+            saveuser(txt_edit_username.Text.ToString(), edit_usertype_combbox.SelectedValue.ToString(), txt_edit_pass.Text.ToString(), Convert.ToInt32(users_combobox.SelectedValue));
+        }
     }
 }
